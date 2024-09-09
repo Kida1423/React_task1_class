@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Example</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+        .movees{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        #movee {
+            width: 100%;
+            gap: 20px;
+        }
+
+        .film {
+            width: 300px;
+            margin: 20px;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        h1 {
+            margin: 15px 0;
+            font-size: 36px;
+            color: #333;
+        }
+
+        p {
+            margin: 0;
+            font-size: 18px;
+            color: #666;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="movee"></div>
+    
+    <script type="text/babel">
+        class MoveeCard extends React.Component {
+            render() {
+                return (
+                    <div className="film">
+                        <img src={this.props.scr} alt="photo"/>
+                        <h1>{this.props.name}</h1>
+                        <p>{this.props.year}</p>
+                    </div>
+                );
+            }
+        }
+
+        class Movees extends React.Component {
+            render() {
+                return (
+                    <div className="movees">
+                        <MoveeCard 
+                            name="1+1"
+                            year="2011" 
+                            scr="img/1+1.webp" 
+                        />
+                        <MoveeCard 
+                            name="The Pursuit of Happyness"
+                            year="2006" 
+                            scr="img/The_Pursuit_Happyness.webp" 
+                        />
+                        <MoveeCard 
+                            name="Bad boys"
+                            year="2011" 
+                            scr="img/bad_boys.webp" 
+                        />
+                    </div>
+                );
+            }
+        }
+
+        const container = document.getElementById('movee');
+        const root = ReactDOM.createRoot(container);
+        root.render(<Movees />);
+    </script>
+</body>
+</html>
